@@ -40,6 +40,16 @@ class EventPolicy
         if ($user->hasRole('admin')) {
             return true;
         }
+        
+        $isOrganizationOwner = $event->organization
+            ->users()
+            ->where('users.id', $user->id)
+            ->wherePivot('role', 'owner')
+            ->exists();
+
+        if ($isOrganizationOwner) {
+            return true;
+        }
 
         return $event->assignments()
             ->where('user_id', $user->id)
