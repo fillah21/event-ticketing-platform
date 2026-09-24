@@ -27,9 +27,16 @@ class EventPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user, int $organization_id): bool
     {
-        return false;
+        if($user->hasRole('admin')) {
+            return true;
+        }
+
+        return $user->organizations()
+                ->wherePivot('role', 'owner')
+                ->wherePivot('organization_id', $organization_id)
+                ->exists();
     }
 
     /**
