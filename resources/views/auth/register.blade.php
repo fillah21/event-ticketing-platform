@@ -84,7 +84,7 @@
     Already have an account?
     <a
         href="{{ route('login') }}"
-        class="font-medium text-indigo-600 hover:text-indigo-500"
+        class="font-medium text-blue-600 hover:text-blue-500"
     >
         Log in
     </a>

@@ -51,7 +51,7 @@
             <input
                 id="remember_me"
                 type="checkbox"
-                class="text-indigo-600 border-gray-300 rounded shadow-sm cursor-pointer focus:ring-indigo-500"
+                class="text-blue-600 border-gray-300 rounded shadow-sm cursor-pointer focus:ring-blue-500"
                 name="remember"
             >
 
@@ -79,7 +79,7 @@
     Don't have an account?
     <a
         href="{{ route('register') }}"
-        class="font-medium text-indigo-600 hover:text-indigo-500"
+        class="font-medium text-blue-600 hover:text-blue-500"
     >
         Register
     </a>
