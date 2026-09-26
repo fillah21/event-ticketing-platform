@@ -1,4 +1,10 @@
 <x-app-layout>
+    @if (session('success'))
+        <div class="px-4 py-3 mb-6 text-sm text-green-700 border border-green-200 rounded-lg bg-green-50">
+            {{ session('success') }}
+        </div>
+    @endif
+    
     <div class="space-y-6">
         <div>
             <h1 class="text-2xl font-semibold text-gray-900">
