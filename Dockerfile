@@ -1,4 +1,4 @@
-FROM php:8.4-cli
+FROM php:8.4-fpm
 
 RUN apt-get update \
     && apt-get install -y unzip \
@@ -18,5 +18,3 @@ RUN composer install \
     --no-scripts
 
 COPY . .
-
-CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8000"]
