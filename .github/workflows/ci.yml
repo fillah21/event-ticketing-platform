@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: cp .env.example .env
+
+      - name: Validate Docker Compose
+        run: docker compose config --quiet
+
+      - name: Build application image
+        run: docker compose build app
