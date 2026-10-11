@@ -21,7 +21,7 @@ class DashboardController extends Controller
             $eventsQuery->whereIn('organization_id', $user->organizations()->select('organizations.id'));
         }
 
-        $events = $eventsQuery->get();
+        $events = $eventsQuery->paginate(10);
 
         return view('dashboard', compact('events'));
     }

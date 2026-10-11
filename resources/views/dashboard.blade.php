@@ -113,6 +113,10 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="p-4 m-4">
+                {{ $events->links() }}
+            </div>
         @endif
     </div>
 </div>
