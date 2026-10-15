@@ -13,14 +13,19 @@ class EventController extends Controller
 {
     public function create()
     {
-        if (Auth::user()->hasRole('admin')) {
+        $user = Auth::user();
+
+        if ($user->hasRole('admin')) {
             $organizations = Organization::all();
         } else {
-            $organizations = Auth::user()->organizations;
+            $organizations = $user->organizations()
+                ->wherePivot('role', 'owner')
+                ->get();
         }
 
         return view('events.create', compact('organizations'));
     }
+
 
     public function store(StoreEventRequest $request)
     {
